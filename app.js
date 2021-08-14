@@ -3,6 +3,9 @@ const cashGiven = document.querySelector("#cash-given");
 const checkButton = document.querySelector("#check-button");
 const message = document.querySelector("#error-message");
 const noOfNotes = document.querySelectorAll(".no-of-notes");
+const nextButton = document.querySelector("#nextBtn");
+const cashGivenSection = document.querySelector('.cash-given-section')
+const notesSection = document.querySelector('.notes-section')
 
 
 const availableNotes = [2000, 500, 100, 20, 10, 5, 1]
@@ -16,7 +19,10 @@ checkButton.addEventListener("click", function validateBillAndCashAmount() {
         if (cashGiven.value >= billAmount.value) { // 2022>12 => true
             const amountToBeReturned = cashGiven.value - billAmount.value; //2010
             calculateChange(amountToBeReturned);
-        } else {
+        }
+        
+        
+        else {
             showMessage(
                 "Get ready to wash plates"
             )
@@ -26,6 +32,18 @@ checkButton.addEventListener("click", function validateBillAndCashAmount() {
         showMessage("Invalid bill amount");
     }
 });
+
+nextButton.addEventListener("click", function showCashAmountAmount() {
+    cashGivenSection.style.display = 'block'   
+});
+
+checkButton.addEventListener("click", function showTable() {
+    notesSection.style.display = 'block'
+});
+
+
+
+
 
 function calculateChange(amountToBeReturned) {
     //go over all the available
