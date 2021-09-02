@@ -10,7 +10,7 @@ const notesSection = document.querySelector('.notes-section')
 
 const availableNotes = [2000, 500, 100, 20, 10, 5, 1]
 
-//checkButton.addEventListener("click", () => console.log("Clicked!"))
+checkButton.addEventListener("click", () => console.log("Clicked!"))
 
 checkButton.addEventListener("click", function validateBillAndCashAmount() {
     hideMessage();
@@ -37,10 +37,11 @@ checkButton.addEventListener("click", function validateBillAndCashAmount() {
 
  nextButton.addEventListener("click",  ()=> {
     if (billAmount.value > 0){
-        cashGivenSection.style.display = 'block'   
+        cashGivenSection.style.display = 'block'
+        message.innerText = ""   
 
     } else{
-        
+        showMessage("Invalid value")
         cashGivenSection.style.display = 'none'   
         notesSection.style.display = 'none' 
         
@@ -53,10 +54,22 @@ checkButton.addEventListener("click", function validateBillAndCashAmount() {
 checkButton.addEventListener("click", ()=> {
     
     if (cashGiven.value > 0){
-        notesSection.style.display = 'block'   
+         
+        message.innerText = "" 
+        
+        if(cashGiven.value >= billAmount.value) {
+            notesSection.style.display = 'block'
+            const amountToBeReturned = cashGiven.value - billAmount.value; //2010
+            calculateChange(amountToBeReturned);
+            
+        } else {
+            showMessage("")
+        }
 
-    } else{
-        notesSection.style.display = 'none' 
+    } 
+    
+    else{
+        notesSection.style.display = 'none';
     
   
 
