@@ -11,11 +11,13 @@ const notesSection = document.querySelector('.notes-section')
 const availableNotes = [2000, 500, 100, 20, 10, 5, 1]
 
 //checkButton.addEventListener("click", () => console.log("Clicked!"))
-console.log(message)
+
 checkButton.addEventListener("click", function validateBillAndCashAmount() {
     hideMessage();
-    console.log(billAmount.value)
+    
     if (billAmount.value > 0) { // eg bill amt = 12
+        
+        console.log(billAmount.value) 
         if (cashGiven.value >= billAmount.value) { // 2022>12 => true
             const amountToBeReturned = cashGiven.value - billAmount.value; //2010
             calculateChange(amountToBeReturned);
@@ -33,17 +35,34 @@ checkButton.addEventListener("click", function validateBillAndCashAmount() {
     }
 });
 
-nextButton.addEventListener("click", function showCashAmountAmount() {
-    cashGivenSection.style.display = 'block'   
+ nextButton.addEventListener("click",  ()=> {
+    if (billAmount.value > 0){
+        cashGivenSection.style.display = 'block'   
+
+    } else{
+        
+        cashGivenSection.style.display = 'none'   
+        notesSection.style.display = 'none' 
+        
+
+        
+    }
+       
+ });
+
+checkButton.addEventListener("click", ()=> {
+    
+    if (cashGiven.value > 0){
+        notesSection.style.display = 'block'   
+
+    } else{
+        notesSection.style.display = 'none' 
+    
+  
+
+        
+    }
 });
-
-checkButton.addEventListener("click", function showTable() {
-    notesSection.style.display = 'block'
-});
-
-
-
-
 
 function calculateChange(amountToBeReturned) {
     //go over all the available
