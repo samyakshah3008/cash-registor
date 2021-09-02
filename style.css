@@ -71,6 +71,7 @@ button{
     background-color:var(--faint-green);
     color: var(--dark-green);
     font-weight: bold;
+    cursor: pointer;
 }
 
 .cash-given-section{
@@ -114,4 +115,5 @@ th,td{
 
 .buttonNext{
     margin-bottom: 1rem;
+    cursor: pointer;
 }
