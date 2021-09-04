@@ -15,11 +15,11 @@ checkButton.addEventListener("click", () => console.log("Clicked!"))
 checkButton.addEventListener("click", function validateBillAndCashAmount() {
     hideMessage();
     
-    if (billAmount.value > 0) { // eg bill amt = 12
+    if (billAmount.value > 0) { 
         
         console.log(billAmount.value) 
-        if (cashGiven.value >= billAmount.value) { // 2022>12 => true
-            const amountToBeReturned = cashGiven.value - billAmount.value; //2010
+        if (cashGiven.value >= billAmount.value) { 
+            const amountToBeReturned = cashGiven.value - billAmount.value; 
             calculateChange(amountToBeReturned);
         }
         
@@ -59,7 +59,7 @@ checkButton.addEventListener("click", ()=> {
         
         if(cashGiven.value >= billAmount.value) {
             notesSection.style.display = 'block'
-            const amountToBeReturned = cashGiven.value - billAmount.value; //2010
+            const amountToBeReturned = cashGiven.value - billAmount.value; 
             calculateChange(amountToBeReturned);
             
         } else {
@@ -78,13 +78,12 @@ checkButton.addEventListener("click", ()=> {
 });
 
 function calculateChange(amountToBeReturned) {
-    //go over all the available
+    
     for (let i = 0; i < availableNotes.length; i++) {
-        const numberOfNotes = Math.trunc(amountToBeReturned / availableNotes[i]); //2010 / 2000 = 1 ||  10/500 = 0
-         //amount left after claculating the number of notes needed
+        const numberOfNotes = Math.trunc(amountToBeReturned / availableNotes[i]); 
+        
         amountToBeReturned = amountToBeReturned % availableNotes[i];
-        // amountToBeReturned %= availableNotes[i];
-        //updating the no of notes in the table
+       
         noOfNotes[i].innerText = numberOfNotes;
     }
 }
