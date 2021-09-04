@@ -10,16 +10,15 @@ const notesSection = document.querySelector('.notes-section')
 
 const availableNotes = [2000, 500, 100, 20, 10, 5, 1]
 
-checkButton.addEventListener("click", () => console.log("Clicked!"))
-
 checkButton.addEventListener("click", function validateBillAndCashAmount() {
     hideMessage();
     
-    if (billAmount.value > 0) { 
+    if (parseInt(billAmount.value) > 0) { 
         
-        console.log(billAmount.value) 
-        if (cashGiven.value >= billAmount.value) { 
+        if (parseInt(cashGiven.value) >= parseInt(billAmount.value)) { 
             const amountToBeReturned = cashGiven.value - billAmount.value; 
+            console.log(amountToBeReturned)
+            notesSection.style.display = 'block'
             calculateChange(amountToBeReturned);
         }
         
@@ -51,31 +50,6 @@ checkButton.addEventListener("click", function validateBillAndCashAmount() {
        
  });
 
-checkButton.addEventListener("click", ()=> {
-    
-    if (cashGiven.value > 0){
-         
-        message.innerText = "" 
-        
-        if(cashGiven.value >= billAmount.value) {
-            notesSection.style.display = 'block'
-            const amountToBeReturned = cashGiven.value - billAmount.value; 
-            calculateChange(amountToBeReturned);
-            
-        } else {
-            showMessage("")
-        }
-
-    } 
-    
-    else{
-        notesSection.style.display = 'none';
-    
-  
-
-        
-    }
-});
 
 function calculateChange(amountToBeReturned) {
     
