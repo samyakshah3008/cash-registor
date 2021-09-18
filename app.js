@@ -25,7 +25,7 @@ checkButton.addEventListener("click", function validateBillAndCashAmount() {
         
         else {
             showMessage(
-                "Get ready to wash plates"
+                "Cash amount given should be greater than or equal to bill amount"
             )
         }
 
